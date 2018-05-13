@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   # @param id [Integer] +User+ id
   # @param name [String] User first name
   # @param email [String] Email address
+  # @param profile [Integer] User profile
   # @return [JSON] JSON with the object and status code if created or error if not created
   def create
     user = User.new(user_params)
@@ -42,6 +43,7 @@ class UsersController < ApplicationController
   # @param id [Integer] +User+ id
   # @param name [String] User first name
   # @param email [String] Email address
+  # @param profile [Integer] User profile
   # @return [JSON] JSON with the object and status code if created or error if not created
   def update
     if @user.update(user_params)
