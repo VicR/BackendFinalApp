@@ -44,6 +44,7 @@ module Overrides
       params.require(resource_name).permit(
         :name,
         :email,
+        :profile,
         :password,
         :password_confirmation
       )
@@ -53,6 +54,7 @@ module Overrides
       params.require(resource_name).permit(
         :name,
         :email,
+        :profile,
         :password,
         :password_confirmation
       )

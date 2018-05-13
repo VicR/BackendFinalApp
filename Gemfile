@@ -46,6 +46,8 @@ group :test do
   gem 'simplecov', require: false
   # use timecop for manipulating time tests
   gem 'timecop', '~> 0.8.1'
+  # VCR for remote API mocks
+  gem 'vcr', '~> 3.0.3'
   # enable mocks within context examples
   gem 'webmock'
 end

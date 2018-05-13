@@ -331,6 +331,7 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.3.2)
+    vcr (3.0.3)
     warden (1.2.7)
       rack (>= 1.0)
     webmock (3.4.1)
@@ -387,6 +388,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   timecop (~> 0.8.1)
+  vcr (~> 3.0.3)
   webmock
   yard
 
