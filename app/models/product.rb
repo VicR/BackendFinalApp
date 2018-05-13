@@ -1,7 +1,7 @@
 # +Product+ Model
 class Product < ApplicationRecord
   # @!attribute id
-  #   @return [Integer] +Profile+ unique ID
+  #   @return [Integer] +Product+ unique ID
   # @!attribute model
   #   @return [String] Model of product
   # @!attribute price
@@ -19,7 +19,7 @@ class Product < ApplicationRecord
   # @!attribute updated_at
   #   @return [Date] Last update Date
   # relations
-  # has_one :characteristic, dependent: :destroy
+  has_many :characteristics, dependent: :destroy
   # has_many :product_adquisitions, dependent: :destroy
   # has_many :product_sales, dependent: :destroy
   # has_many :rent_products, dependent: :destroy

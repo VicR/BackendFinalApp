@@ -4,8 +4,8 @@ RSpec.describe Product, type: :model do
   describe 'validations' do
     context 'valid' do
       it 'should create' do
-        u = build(:product)
-        expect(u.save).to eq(true)
+        pr = build(:product)
+        expect(pr.save).to eq(true)
       end
     end
     context 'invalid' do

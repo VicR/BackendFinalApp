@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
 
   # Create a new instance of +Product+ and save it to the database
-  # @param id [Integer] +User+ id
+  # @param id [Integer] +Product+ id
   # @param model [String] Model of product
   # @param price [Decimal] Price in Pesos (MXN)
   # @param inventory [Integer] Amount of products in stock
@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
   end
 
   # Update an existing instance of +Product+ and save it to the database
-  # @param id [Integer] +User+ id
+  # @param id [Integer] +Product+ id
   # @param model [String] Model of product
   # @param price [Decimal] Price in Pesos (MXN)
   # @param inventory [Integer] Amount of products in stock
@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
   end
 
   # Destroy an existing instance of +Product+
-  # @param id [Integer] +User+ id
+  # @param id [Integer] +Product+ id
   # @return [JSON] Return no content status on success
   def destroy
     render json: @product.destroy, status: :no_content
