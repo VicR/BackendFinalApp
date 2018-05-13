@@ -6,6 +6,8 @@ class Characteristic < ApplicationRecord
   #   @return [String] Product-specific spec
   # @!attribute value
   #   @return [String] Spec of field
+  # @!attribute product_id
+  #   @return [Integer] Parent +Product+ id
   # @!attribute created_at
   #   @return [Date] Creation Date
   # @!attribute updated_at

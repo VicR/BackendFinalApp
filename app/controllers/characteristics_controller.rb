@@ -9,7 +9,7 @@ class CharacteristicsController < ApplicationController
   def index
     render_json_api_list_resource(
       collection: Characteristic.where(nil),
-      search_fields: %i[model]
+      search_fields: %i[field value]
     )
   end
 
@@ -28,7 +28,7 @@ class CharacteristicsController < ApplicationController
   # @param id [Integer] +Characteristic+ id
   # @param field [String] Product-specific spec
   # @param value [String] Specific field
-  # @param product_id [Integer] Amount of characteristics in stock
+  # @param product_id [Integer] Parent +Product+ id
   # @return [JSON] JSON with the object and status code if created or error if not created
   def create
     characteristic = Characteristic.new(characteristic_params)
@@ -43,7 +43,7 @@ class CharacteristicsController < ApplicationController
   # @param id [Integer] +Characteristic+ id
   # @param field [String] Product-specific spec
   # @param value [String] Specific field
-  # @param product_id [Integer] Amount of characteristics in stock
+  # @param product_id [Integer]  Parent +Product+ id
   # @return [JSON] JSON with the object and status code if created or error if not created
   def update
     if @characteristic.update(characteristic_params)
