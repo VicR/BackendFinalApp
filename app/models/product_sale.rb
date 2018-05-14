@@ -22,4 +22,23 @@ class ProductSale < ApplicationRecord
   # validations
   validates :sale_date, presence: true
   validates :quantity, presence: true, numericality: true
+
+  # CSV
+  # Generates CSV file from all +ProductAdquisition+
+  # @param [Hash] options - Optional hash of options thats Ruby's CSV::generate understands
+  # @return [File] CSV with data about all +ProductAdquisition+
+  def adquisitions_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << ['ID', 'Fecha', 'Cantidad', 'ID Producto', 'ID Provedor']
+      all.find_each do |adq|
+        csv << [
+          adq.id,
+          adq.adquisition_date,
+          adq.quantity,
+          adq.product_id,
+          adq.provider_id
+        ]
+      end
+    end
+  end
 end

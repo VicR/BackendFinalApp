@@ -20,4 +20,31 @@ class Fabricator < ApplicationRecord
   validates :name,
             :address, presence: true
   validates :employee_qty, presence: true, numericality: true
+
+  # CSV
+  # Generates CSV file from all +Fabricator+
+  # @param [Hash] options - Optional hash of options thats Ruby's CSV::generate understands
+  # @return [File] CSV with data about all +Fabricator+
+  def fabricators_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << ['Nombre', 'Dirección', 'No. Empleados']
+      all.find_each do |fabricator|
+        csv << [
+          fabricator.id,
+          fabricator.name,
+          fabricator.address,
+          fabricator.employee_qty.to_s
+        ]
+        fabricator.high_tech_products.find_each do |prod|
+          csv << ['Productos de Alta Tecnología']
+          csv << ['ID', 'País', 'Fecha Fabricación']
+          csv << [
+            prod.id,
+            prod.country,
+            prod.fabrication_date
+          ]
+        end
+      end
+    end
+  end
 end

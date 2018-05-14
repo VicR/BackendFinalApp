@@ -48,7 +48,7 @@ class Client < ApplicationRecord
   # @return [File] CSV with data about all +Clients+
   def clients_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << ['Name', 'INE', 'Phone', 'Address']
+      csv << ['Nombre', 'INE', 'Teléfono', 'Dirección']
       all.find_each do |client|
         csv << [
           client.full_name,
@@ -57,6 +57,8 @@ class Client < ApplicationRecord
           client.address
         ]
         client.client_services.find_each do |service|
+          csv << ['Servicios']
+          csv << ['ID', 'Descripcion', 'Total']
           csv << [
             service.id,
             service.description,
@@ -64,12 +66,16 @@ class Client < ApplicationRecord
           ]
         end
         client.client_printers.find_each do |printer|
+          csv << ['Impresoras']
+          csv << ['ID', 'Descripcion', 'Total']
           csv << [
             printer.id,
             printer.adquisition_date
           ]
         end
         client.product_sales.find_each do |sale|
+          csv << ['Compras']
+          csv << ['ID', 'Fecha Compra', 'Cantidad']
           csv << [
             sale.id,
             sale.sale_date,
