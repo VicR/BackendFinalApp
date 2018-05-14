@@ -9,7 +9,7 @@ class ClientServicesController < ApplicationController
   def index
     render_json_api_list_resource(
       collection: ClientService.where(nil),
-      search_fields: %i[adquisition_date]
+      search_fields: %i[description total]
     )
   end
 
@@ -26,7 +26,8 @@ class ClientServicesController < ApplicationController
 
   # Create a new instance of +ClientService+ and save it to the database
   # @param id [Integer] +ClientService+ id
-  # @param adquisition_date [Timestamp] Date-time of printer adquisition
+  # @param description [String] Description of service provided
+  # @param total [Decimal] Total amount
   # @param client_id [Integer] ID of parent +Client+
   # @return [JSON] JSON with the object and status code if created or error if not created
   def create
@@ -40,7 +41,8 @@ class ClientServicesController < ApplicationController
 
   # Update an existing instance of +ClientService+ and save it to the database
   # @param id [Integer] +ClientService+ id
-  # @param adquisition_date [Timestamp] Date-time of printer adquisition
+  # @param description [String] Description of service provided
+  # @param total [Decimal] Total amount
   # @param client_id [Integer] ID of parent +Client+
   # @return [JSON] JSON with the object and status code if created or error if not created
   def update
@@ -63,7 +65,8 @@ class ClientServicesController < ApplicationController
   # Allowed parameters
   def client_service_params
     params.require(:client_service).permit(
-      :adquisition_date,
+      :description,
+      :total,
       :client_id
     )
   end

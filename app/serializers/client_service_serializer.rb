@@ -1,5 +1,6 @@
 # +ClientService+ Serializer
 class ClientServiceSerializer < ApplicationSerializer
-  attributes :adquisition_date,
+  attributes :description,
+             :total,
              :client_id
 end

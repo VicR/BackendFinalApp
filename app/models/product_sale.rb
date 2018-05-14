@@ -1,7 +1,7 @@
 # +ProductSale+ Model
 class ProductSale < ApplicationRecord
   # @!attribute id
-  #   @return [Integer] +ProductAdquisition+ unique ID
+  #   @return [Integer] +ProductSale+ unique ID
   # @!attribute sale_date
   #   @return [Timestamp] Date-time of sale (ISO 8601)
   # @!attribute quantity

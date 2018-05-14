@@ -2,8 +2,10 @@
 class ClientService < ApplicationRecord
   # @!attribute id
   #   @return [Integer] +ClientService+ unique ID
-  # @!attribute adquisition_date
-  #   @return [Timestamp] Date-time of printer adquisition (ISO 8601)
+  # @!attribute description
+  #   @return [String] Description of service provided
+  # @!attribute total
+  #   @return [Decimal] Total amount
   # @!attribute client_id
   #   @return [Integer] Parent +Client+ id
   # @!attribute created_at
@@ -15,5 +17,6 @@ class ClientService < ApplicationRecord
   belongs_to :client
 
   # validations
-  validates :adquisition_date, presence: true
+  validates :description,
+            :total, presence: true
 end

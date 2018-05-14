@@ -28,10 +28,10 @@ class User < ApplicationRecord
   # modules
   # +Profile+ Module
   module Profile
-    CPU = 0
-    PRINTER = 1
-    MONITOR = 2
-    HDD = 3
-    OTHER = 4
+    ADMIN = 0
+    OWNER = 1
+    MANAGER = 2
+    SALESMAN = 3
+    CLIENT = 4
   end
 end

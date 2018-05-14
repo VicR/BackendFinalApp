@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514014130) do
+ActiveRecord::Schema.define(version: 20180514022203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,20 @@ ActiveRecord::Schema.define(version: 20180514014130) do
     t.index ["product_id"], name: "index_characteristics_on_product_id"
   end
 
-  create_table "client_services", force: :cascade do |t|
+  create_table "client_printers", force: :cascade do |t|
     t.datetime "adquisition_date"
     t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_client_printers_on_client_id"
+  end
+
+  create_table "client_services", force: :cascade do |t|
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "description"
+    t.decimal "total"
     t.index ["client_id"], name: "index_client_services_on_client_id"
   end
 
