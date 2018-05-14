@@ -6,6 +6,20 @@ class ProductSalesController < ApplicationController
 
   # Fetch all +ProductSale+
   # @return [Array] JSON array of all +ProductSale+
+  # @example
+  #   {
+  #     "product_sales":[{
+  #       "id":109,
+  #       "sale_date":"2017-03-01T00:00:00.000Z",
+  #       "quantity":15,
+  #       "product_id":1085,
+  #       "client_id":524
+  #     }],
+  #     "meta":{
+  #       "itemsCount":1,
+  #       "pagesCount":1
+  #     }
+  #   }
   def index
     render_json_api_list_resource(
       collection: ProductSale.where(nil),
@@ -15,7 +29,17 @@ class ProductSalesController < ApplicationController
 
   # Fetches a given +ProductSale+ element with a given +id+
   # @param id [Integer] +ProductSale+ id
-  # @return [JSON] JSON serialization of found record
+  # @return [JSON] JSON serialization of found record# @example
+  # @example
+  #   {
+  #     "product_sale":{
+  #       "id":109,
+  #       "sale_date":"2017-03-01T00:00:00.000Z",
+  #       "quantity":15,
+  #       "product_id":1085,
+  #       "client_id":524
+  #     }
+  #   }
   def show
     if @product_sale.nil?
       render json: {}, status: :not_found
@@ -31,6 +55,16 @@ class ProductSalesController < ApplicationController
   # @param product_id [Integer] Parent +Product+ ID
   # @param client_id [Integer] Parent +Client+ ID
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "product_sale":{
+  #       "id":109,
+  #       "sale_date":"2017-03-01T00:00:00.000Z",
+  #       "quantity":15,
+  #       "product_id":1085,
+  #       "client_id":524
+  #     }
+  #   }
   def create
     product_sale = ProductSale.new(product_sale_params)
     if product_sale.save
@@ -47,6 +81,16 @@ class ProductSalesController < ApplicationController
   # @param product_id [Integer] Parent +Product+ ID
   # @param client_id [Integer] Parent +Client+ ID
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "product_sale":{
+  #       "id":109,
+  #       "sale_date":"2017-03-01T00:00:00.000Z",
+  #       "quantity":70,
+  #       "product_id":1085,
+  #       "client_id":524
+  #     }
+  #   }
   def update
     if @product_sale.update(product_sale_params)
       render json: @product_sale
@@ -58,6 +102,8 @@ class ProductSalesController < ApplicationController
   # Destroy an existing instance of +ProductSale+
   # @param id [Integer] +ProductSale+ id
   # @return [JSON] Return no content status on success
+  # @example
+  #   {}
   def destroy
     render json: @product_sale.destroy, status: :no_content
   end

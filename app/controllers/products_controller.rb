@@ -6,6 +6,22 @@ class ProductsController < ApplicationController
 
   # Fetch all +Product+
   # @return [Array] JSON array of all +Product+
+  # @example
+  #   {
+  #     "products":[{
+  #       "id":1093,
+  #       "product_type":0,
+  #       "model":"Incredible Granite Chair",
+  #       "price":"2451.25",
+  #       "inventory":20,
+  #       "high_tech":false,
+  #       "rentable":false
+  #     }],
+  #     "meta":{
+  #       "itemsCount":1,
+  #       "pagesCount":1
+  #     }
+  #   }
   def index
     render_json_api_list_resource(
       collection: Product.where(nil),
@@ -16,6 +32,18 @@ class ProductsController < ApplicationController
   # Fetches a given +Product+ element with a given +id+
   # @param id [Integer] +Product+ id
   # @return [JSON] JSON serialization of found record
+  # @example
+  #   {
+  #     "product":{
+  #       "id":1093,
+  #       "product_type":0,
+  #       "model":"Incredible Granite Chair",
+  #       "price":"2451.25",
+  #       "inventory":20,
+  #       "high_tech":false,
+  #       "rentable":false
+  #     }
+  #   }
   def show
     if @product.nil?
       render json: {}, status: :not_found
@@ -33,6 +61,18 @@ class ProductsController < ApplicationController
   # @param high_tech [Boolean] Specifies if product is high tech
   # @param rentable [Boolean] Specifies if product can be rented
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "product":{
+  #       "id":1093,
+  #       "product_type":0,
+  #       "model":"Incredible Granite Chair",
+  #       "price":"2451.25",
+  #       "inventory":20,
+  #       "high_tech":false,
+  #       "rentable":false
+  #     }
+  #   }
   def create
     product = Product.new(product_params)
     if product.save
@@ -51,6 +91,18 @@ class ProductsController < ApplicationController
   # @param high_tech [Boolean] Specifies if product is high tech
   # @param rentable [Boolean] Specifies if product can be rented
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "product":{
+  #       "id":1093,
+  #       "product_type":0,
+  #       "model":"Updated model",
+  #       "price":"2451.25",
+  #       "inventory":20,
+  #       "high_tech":false,
+  #       "rentable":false
+  #     }
+  #   }
   def update
     if @product.update(product_params)
       render json: @product
@@ -62,6 +114,8 @@ class ProductsController < ApplicationController
   # Destroy an existing instance of +Product+
   # @param id [Integer] +Product+ id
   # @return [JSON] Return no content status on success
+  # @example
+  #   {}
   def destroy
     render json: @product.destroy, status: :no_content
   end

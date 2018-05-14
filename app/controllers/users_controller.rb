@@ -6,6 +6,18 @@ class UsersController < ApplicationController
 
   # Fetch all +User+
   # @return [Array] JSON array of all +User+
+  # @example
+  #   {
+  #     "users": [{
+  #       "id":151,
+  #       "name":"Terence",
+  #       "email":"horace@boganwisozk.net"
+  #     }],
+  #     "meta":{
+  #       "itemsCount":2,
+  #       "pagesCount":1
+  #     }
+  #   }
   def index
     render_json_api_list_resource(
       collection: User.where.not(id: current_user.id),
@@ -16,6 +28,14 @@ class UsersController < ApplicationController
   # Fetches a given +User+ element with a given +id+
   # @param id [Integer] +User+ id
   # @return [JSON] JSON serialization of found record
+  # @example
+  #   {
+  #     "user": {
+  #       "id":154,
+  #       "name":"Orland",
+  #       "email":"cornelius_hamill@murazik.biz"
+  #     }
+  #   }
   def show
     if @user.nil?
       render json: {}, status: :not_found
@@ -30,6 +50,14 @@ class UsersController < ApplicationController
   # @param email [String] Email address
   # @param profile [Integer] User profile
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "user": {
+  #       "id":154,
+  #       "name":"Orland",
+  #       "email":"cornelius_hamill@murazik.biz"
+  #     }
+  #   }
   def create
     user = User.new(user_params)
     if user.save
@@ -45,6 +73,14 @@ class UsersController < ApplicationController
   # @param email [String] Email address
   # @param profile [Integer] User profile
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "user": {
+  #       "id":154,
+  #       "name":"Updated name",
+  #       "email":"cornelius_hamill@murazik.biz"
+  #     }
+  #   }
   def update
     if @user.update(user_params)
       render json: @user
@@ -56,6 +92,8 @@ class UsersController < ApplicationController
   # Destroy an existing instance of +User+
   # @param id [Integer] +User+ id
   # @return [JSON] Return no content status on success
+  # @example
+  #   {}
   def destroy
     render json: @user.destroy
   end

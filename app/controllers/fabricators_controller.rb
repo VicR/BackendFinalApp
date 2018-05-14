@@ -5,7 +5,20 @@ class FabricatorsController < ApplicationController
   before_action :fabricator, only: %i[show update destroy]
 
   # Fetch all +Fabricator+
-  # @return [Array] JSON array of all +Fabricator+
+  # @return [Array] JSON array of all +Fabricator+# @example
+  # @example
+  #   {
+  #     "fabricators":[{
+  #       "id":144,
+  #       "name":"Asus",
+  #       "address":"50 Asus Road. Asus",
+  #       "employee_qty":123
+  #     }],
+  #     "meta":{
+  #       "itemsCount":1,
+  #       "pagesCount":1
+  #     }
+  #   }
   def index
     render_json_api_list_resource(
       collection: Fabricator.where(nil),
@@ -15,7 +28,16 @@ class FabricatorsController < ApplicationController
 
   # Fetches a given +Fabricator+ element with a given +id+
   # @param id [Integer] +Fabricator+ id
-  # @return [JSON] JSON serialization of found record
+  # @return [JSON] JSON serialization of found record# @example
+  # @example
+  #   {
+  #     "fabricator":{
+  #       "id":144,
+  #       "name":"Asus",
+  #       "address":"50 Asus Road. Asus",
+  #       "employee_qty":123
+  #     }
+  #   }
   def show
     if @fabricator.nil?
       render json: {}, status: :not_found
@@ -30,6 +52,15 @@ class FabricatorsController < ApplicationController
   # @param address [String] Address
   # @param employee_qty [Integer] Number of employees hired
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "fabricator":{
+  #       "id":144,
+  #       "name":"Asus",
+  #       "address":"50 Asus Road. Asus",
+  #       "employee_qty":123
+  #     }
+  #   }
   def create
     fabricator = Fabricator.new(fabricator_params)
     if fabricator.save
@@ -45,6 +76,15 @@ class FabricatorsController < ApplicationController
   # @param address [String] Address
   # @param employee_qty [Integer] Number of employees hired
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "fabricator":{
+  #       "id":144,
+  #       "name":"Updated name",
+  #       "address":"50 Asus Road. Asus",
+  #       "employee_qty":123
+  #     }
+  #   }
   def update
     if @fabricator.update(fabricator_params)
       render json: @fabricator
@@ -56,6 +96,8 @@ class FabricatorsController < ApplicationController
   # Destroy an existing instance of +Fabricator+
   # @param id [Integer] +Fabricator+ id
   # @return [JSON] Return no content status on success
+  # @example
+  #   {}
   def destroy
     render json: @fabricator.destroy, status: :no_content
   end

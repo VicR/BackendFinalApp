@@ -6,6 +6,20 @@ class ProductAdquisitionsController < ApplicationController
 
   # Fetch all +ProductAdquisition+
   # @return [Array] JSON array of all +ProductAdquisition+
+  # @example
+  #   {
+  #     "product_adquisitions":[{
+  #       "id":163,
+  #       "adquisition_date":"2018-03-01T00:00:00.000Z",
+  #       "quantity":15,
+  #       "product_id":1077,
+  #       "provider_id":403
+  #     }],
+  #     "meta":{
+  #       "itemsCount":1,
+  #       "pagesCount":1
+  #     }
+  #   }
   def index
     render_json_api_list_resource(
       collection: ProductAdquisition.where(nil),
@@ -16,6 +30,16 @@ class ProductAdquisitionsController < ApplicationController
   # Fetches a given +ProductAdquisition+ element with a given +id+
   # @param id [Integer] +ProductAdquisition+ id
   # @return [JSON] JSON serialization of found record
+  # @example
+  #   {
+  #     "product_adquisition":{
+  #       "id":163,
+  #       "adquisition_date":"2018-03-01T00:00:00.000Z",
+  #       "quantity":15,
+  #       "product_id":1077,
+  #       "provider_id":403
+  #     }
+  #   }
   def show
     if @product_adquisition.nil?
       render json: {}, status: :not_found
@@ -31,6 +55,16 @@ class ProductAdquisitionsController < ApplicationController
   # @param product_id [Integer] Parent +Product+ ID
   # @param provider_id [Integer] Parent +Provider+ ID
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "product_adquisition":{
+  #       "id":163,
+  #       "adquisition_date":"2018-03-01T00:00:00.000Z",
+  #       "quantity":15,
+  #       "product_id":1077,
+  #       "provider_id":403
+  #     }
+  #   }
   def create
     product_adquisition = ProductAdquisition.new(product_adquisition_params)
     if product_adquisition.save
@@ -47,6 +81,16 @@ class ProductAdquisitionsController < ApplicationController
   # @param product_id [Integer] Parent +Product+ ID
   # @param provider_id [Integer] Parent +Provider+ ID
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "product_adquisition":{
+  #       "id":163,
+  #       "adquisition_date":"2018-03-01T00:00:00.000Z",
+  #       "quantity":70,
+  #       "product_id":1077,
+  #       "provider_id":403
+  #     }
+  #   }
   def update
     if @product_adquisition.update(product_adquisition_params)
       render json: @product_adquisition
@@ -58,6 +102,8 @@ class ProductAdquisitionsController < ApplicationController
   # Destroy an existing instance of +ProductAdquisition+
   # @param id [Integer] +ProductAdquisition+ id
   # @return [JSON] Return no content status on success
+  # @example
+  #   {}
   def destroy
     render json: @product_adquisition.destroy, status: :no_content
   end

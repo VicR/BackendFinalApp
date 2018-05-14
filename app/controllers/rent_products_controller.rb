@@ -6,6 +6,18 @@ class RentProductsController < ApplicationController
 
   # Fetch all +RentProduct+
   # @return [Array] JSON array of all +RentProduct+
+  # @example
+  #   {
+  #     "rent_products":[{
+  #       "id":106,
+  #       "price_hour":"85.0",
+  #       "product_id":1100
+  #     }],
+  #     "meta":{
+  #       "itemsCount":1,
+  #       "pagesCount":1
+  #     }
+  #   }
   def index
     render_json_api_list_resource(
       collection: RentProduct.where(nil),
@@ -16,6 +28,14 @@ class RentProductsController < ApplicationController
   # Fetches a given +RentProduct+ element with a given +id+
   # @param id [Integer] +RentProduct+ id
   # @return [JSON] JSON serialization of found record
+  # @example
+  #   {
+  #     "rent_product":{
+  #       "id":106,
+  #       "price_hour":"85.0",
+  #       "product_id":1100
+  #     }
+  #   }
   def show
     if @rent_product.nil?
       render json: {}, status: :not_found
@@ -29,6 +49,14 @@ class RentProductsController < ApplicationController
   # @param price_hour [Decimal] Price per hour of rental
   # @param product_id [Integer] Parent +Product+ id
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "rent_product":{
+  #       "id":106,
+  #       "price_hour":"85.0",
+  #       "product_id":1100
+  #     }
+  #   }
   def create
     rent_product = RentProduct.new(rent_product_params)
     if rent_product.save
@@ -43,6 +71,14 @@ class RentProductsController < ApplicationController
   # @param price_hour [Decimal] Price per hour of rental
   # @param product_id [Integer]  Parent +Product+ id
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "rent_product":{
+  #       "id":106,
+  #       "price_hour":"18.2",
+  #       "product_id":1100
+  #     }
+  #   }
   def update
     if @rent_product.update(rent_product_params)
       render json: @rent_product
@@ -54,6 +90,8 @@ class RentProductsController < ApplicationController
   # Destroy an existing instance of +RentProduct+
   # @param id [Integer] +RentProduct+ id
   # @return [JSON] Return no content status on success
+  # @example
+  #   {}
   def destroy
     render json: @rent_product.destroy, status: :no_content
   end

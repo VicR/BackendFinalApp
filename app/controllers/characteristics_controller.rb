@@ -6,6 +6,19 @@ class CharacteristicsController < ApplicationController
 
   # Fetch all +Characteristic+
   # @return [Array] JSON array of all +Characteristic+
+  # @example
+  #   {
+  #     "characteristics":[{
+  #       "id":239,
+  #       "field":"Resolución:",
+  #       "value":"1280x720",
+  #       "product_id":1061
+  #     }],
+  #     "meta":{
+  #       "itemsCount":1,
+  #       "pagesCount":1
+  #     }
+  #   }
   def index
     render_json_api_list_resource(
       collection: Characteristic.where(nil),
@@ -16,6 +29,15 @@ class CharacteristicsController < ApplicationController
   # Fetches a given +Characteristic+ element with a given +id+
   # @param id [Integer] +Characteristic+ id
   # @return [JSON] JSON serialization of found record
+  # @example
+  #   {
+  #     "characteristic":{
+  #       "id":240,
+  #       "field":"Resolución:",
+  #       "value":"1280x720",
+  #       "product_id":1062
+  #     }
+  #   }
   def show
     if @characteristic.nil?
       render json: {}, status: :not_found
@@ -30,6 +52,15 @@ class CharacteristicsController < ApplicationController
   # @param value [String] Specific field
   # @param product_id [Integer] Parent +Product+ id
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "characteristic":{
+  #       "id":240,
+  #       "field":"Resolución:",
+  #       "value":"1280x720",
+  #       "product_id":1062
+  #     }
+  #   }
   def create
     characteristic = Characteristic.new(characteristic_params)
     if characteristic.save
@@ -45,6 +76,15 @@ class CharacteristicsController < ApplicationController
   # @param value [String] Specific field
   # @param product_id [Integer]  Parent +Product+ id
   # @return [JSON] JSON with the object and status code if created or error if not created
+  # @example
+  #   {
+  #     "characteristic":{
+  #       "id":240,
+  #       "field":"Resolución:",
+  #       "value":"Updated value",
+  #       "product_id":1062
+  #     }
+  #   }
   def update
     if @characteristic.update(characteristic_params)
       render json: @characteristic
@@ -56,6 +96,8 @@ class CharacteristicsController < ApplicationController
   # Destroy an existing instance of +Characteristic+
   # @param id [Integer] +Characteristic+ id
   # @return [JSON] Return no content status on success
+  # @example
+  #   {}
   def destroy
     render json: @characteristic.destroy, status: :no_content
   end
