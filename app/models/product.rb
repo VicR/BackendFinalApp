@@ -35,6 +35,7 @@ class Product < ApplicationRecord
   validates :high_tech,
             :rentable, inclusion: { in: [true, false] }
 
+  # modules
   # +ProductType+ Module
   module ProductType
     CPU = 0

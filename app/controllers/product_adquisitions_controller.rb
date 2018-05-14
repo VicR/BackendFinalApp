@@ -1,5 +1,5 @@
 # +ProductAdquisition+ Controller
-class AdquisitionsController < ApplicationController
+class ProductAdquisitionsController < ApplicationController
   # filters
   before_action :authenticate_user!
   before_action :product_adquisition, only: %i[show update destroy]

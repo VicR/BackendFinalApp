@@ -25,4 +25,13 @@ class User < ApplicationRecord
   validates :name,
             :email,
             :profile, presence: true
+  # modules
+  # +Profile+ Module
+  module Profile
+    CPU = 0
+    PRINTER = 1
+    MONITOR = 2
+    HDD = 3
+    OTHER = 4
+  end
 end

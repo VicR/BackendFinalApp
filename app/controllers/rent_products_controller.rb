@@ -30,7 +30,7 @@ class RentProductController < ApplicationController
   # @param product_id [Integer] Parent +Product+ id
   # @return [JSON] JSON with the object and status code if created or error if not created
   def create
-    rent_product = RentProduct.new(characteristic_params)
+    rent_product = RentProduct.new(rent_product_params)
     if rent_product.save
       render json: rent_product, status: :created
     else
@@ -44,7 +44,7 @@ class RentProductController < ApplicationController
   # @param product_id [Integer]  Parent +Product+ id
   # @return [JSON] JSON with the object and status code if created or error if not created
   def update
-    if @rent_product.update(characteristic_params)
+    if @rent_product.update(rent_product_params)
       render json: @rent_product
     else
       render_error(@rent_product)
@@ -61,7 +61,7 @@ class RentProductController < ApplicationController
   protected
 
   # Allowed parameters
-  def characteristic_params
+  def rent_product_params
     params.require(:rent_product).permit(
       :price_hour,
       :product_id

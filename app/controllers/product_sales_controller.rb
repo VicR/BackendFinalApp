@@ -1,5 +1,5 @@
 # +ProductSale+ Controller
-class AdquisitionsController < ApplicationController
+class ProductSalesController < ApplicationController
   # filters
   before_action :authenticate_user!
   before_action :product_sale, only: %i[show update destroy]
@@ -42,7 +42,7 @@ class AdquisitionsController < ApplicationController
 
   # Update an existing instance of +ProductSale+ and save it to the database
   # @param id [Integer] +ProductSale+ id
-  # @param sale_date [Timestamp] Date-time of transaction (ISO 8601)
+  # @param sale_date [Timestamp] Date-time of sale (ISO 8601)
   # @param quantity [Integer] Amount of products acquired
   # @param product_id [Integer] Parent +Product+ ID
   # @param client_id [Integer] Parent +Client+ ID
