@@ -21,8 +21,10 @@ class Client < ApplicationRecord
   # @!attribute updated_at
   #   @return [Date] Last update Date
   # relations
+  belongs_to :user
   has_many :client_services, dependent: :destroy
   has_many :client_printers, dependent: :destroy
+  has_many :product_sales, dependent: :destroy
 
   # validations
   validates :name,
