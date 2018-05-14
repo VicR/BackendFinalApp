@@ -27,6 +27,9 @@ class UsersController < ApplicationController
 
   # Fetches a given +User+ element with a given +id+
   # @param id [Integer] +User+ id
+  # @param name [String] User first name
+  # @param email [String] Email address
+  # @param profile [Integer] User profile
   # @return [JSON] JSON serialization of found record
   # @example
   #   {

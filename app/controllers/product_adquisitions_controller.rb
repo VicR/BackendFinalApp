@@ -29,6 +29,10 @@ class ProductAdquisitionsController < ApplicationController
 
   # Fetches a given +ProductAdquisition+ element with a given +id+
   # @param id [Integer] +ProductAdquisition+ id
+  # @param adquisition_date [Timestamp] Date-time of transaction (ISO 8601)
+  # @param quantity [Integer] Amount of products acquired
+  # @param product_id [Integer] Parent +Product+ ID
+  # @param provider_id [Integer] Parent +Provider+ ID
   # @return [JSON] JSON serialization of found record
   # @example
   #   {

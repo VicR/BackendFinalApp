@@ -28,6 +28,9 @@ class FabricatorsController < ApplicationController
 
   # Fetches a given +Fabricator+ element with a given +id+
   # @param id [Integer] +Fabricator+ id
+  # @param name [String] Name of fabricator
+  # @param address [String] Address
+  # @param employee_qty [Integer] Number of employees hired
   # @return [JSON] JSON serialization of found record# @example
   # @example
   #   {

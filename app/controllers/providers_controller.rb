@@ -26,6 +26,8 @@ class ProvidersController < ApplicationController
 
   # Fetches a given +Provider+ element with a given +id+
   # @param id [Integer] +Provider+ id
+  # @param name [String] Name of provider
+  # @param address [String] Address
   # @return [JSON] JSON serialization of found record
   # @example
   #   {

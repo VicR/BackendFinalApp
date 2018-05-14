@@ -27,6 +27,8 @@ class RentProductsController < ApplicationController
 
   # Fetches a given +RentProduct+ element with a given +id+
   # @param id [Integer] +RentProduct+ id
+  # @param price_hour [Decimal] Price per hour of rental
+  # @param product_id [Integer] Parent +Product+ id
   # @return [JSON] JSON serialization of found record
   # @example
   #   {

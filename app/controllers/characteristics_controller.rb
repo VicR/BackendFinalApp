@@ -28,6 +28,9 @@ class CharacteristicsController < ApplicationController
 
   # Fetches a given +Characteristic+ element with a given +id+
   # @param id [Integer] +Characteristic+ id
+  # @param field [String] Product-specific spec
+  # @param value [String] Specific field
+  # @param product_id [Integer] Parent +Product+ id
   # @return [JSON] JSON serialization of found record
   # @example
   #   {

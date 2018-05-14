@@ -29,6 +29,10 @@ class ProductSalesController < ApplicationController
 
   # Fetches a given +ProductSale+ element with a given +id+
   # @param id [Integer] +ProductSale+ id
+  # @param sale_date [Timestamp] Date-time of sale (ISO 8601)
+  # @param quantity [Integer] Amount of products acquired
+  # @param product_id [Integer] Parent +Product+ ID
+  # @param client_id [Integer] Parent +Client+ ID
   # @return [JSON] JSON serialization of found record# @example
   # @example
   #   {

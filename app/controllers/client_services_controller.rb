@@ -31,6 +31,9 @@ class ClientServicesController < ApplicationController
 
   # Fetches a given +ClientService+ element with a given +id+
   # @param id [Integer] +ClientService+ id
+  # @param description [String] Description of service provided
+  # @param total [Decimal] Total amount
+  # @param client_id [Integer] ID of parent +Client+
   # @return [JSON] JSON serialization of found record
   # @example
   #   {

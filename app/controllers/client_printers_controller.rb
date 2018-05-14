@@ -27,6 +27,8 @@ class ClientPrintersController < ApplicationController
 
   # Fetches a given +ClientPrinter+ element with a given +id+
   # @param id [Integer] +ClientPrinter+ id
+  # @param adquisition_date [Timestamp] Date-time of printer adquisition
+  # @param client_id [Integer] ID of parent +Client+
   # @return [JSON] JSON serialization of found record
   # @example
   #   {

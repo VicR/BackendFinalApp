@@ -29,6 +29,10 @@ class HighTechProductsController < ApplicationController
 
   # Fetches a given +HighTechProduct+ element with a given +id+
   # @param id [Integer] +HighTechProduct+ id
+  # @param country [String] Country of origin
+  # @param fabrication_date [Date] Date of fabrication (ISO 8601)
+  # @param product_id [Integer] ID of parent +Product+
+  # @param fabricator_id [Integer] ID of parent +Fabricator+
   # @return [JSON] JSON serialization of found record
   # @example
   #   {

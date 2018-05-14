@@ -32,6 +32,13 @@ class ClientsController < ApplicationController
 
   # Fetches a given +Client+ element with a given +id+
   # @param id [Integer] +Client+ id
+  # @param name [String] First name
+  # @param fathers_last [String] Father's last name
+  # @param mothers_last [String] Mother's last name
+  # @param ine [String] INE digits
+  # @param phone [String] Phone number
+  # @param address [String] Home address
+  # @param user_id [Integer] Parent +User+ id
   # @return [JSON] JSON serialization of found record
   # @example
   #   {

@@ -31,6 +31,12 @@ class ProductsController < ApplicationController
 
   # Fetches a given +Product+ element with a given +id+
   # @param id [Integer] +Product+ id
+  # @param model [String] Model of product
+  # @param price [Decimal] Price in Pesos (MXN)
+  # @param inventory [Integer] Amount of products in stock
+  # @param product_type [Integer] Specifies type of product
+  # @param high_tech [Boolean] Specifies if product is high tech
+  # @param rentable [Boolean] Specifies if product can be rented
   # @return [JSON] JSON serialization of found record
   # @example
   #   {
