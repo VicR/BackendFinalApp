@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :product do
-    model { Faker::Name.first_name }
+    model { Faker::Commerce.product_name }
     product_type { Faker::Number.between(0, 4) }
     inventory { Faker::Number.between(1, 50) }
     price { Faker::Number.decimal(4, 2) }
