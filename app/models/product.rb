@@ -20,10 +20,10 @@ class Product < ApplicationRecord
   #   @return [Date] Last update Date
   # relations
   has_many :characteristics, dependent: :destroy
-  # has_many :product_adquisitions, dependent: :destroy
-  # has_many :product_sales, dependent: :destroy
-  # has_many :rent_products, dependent: :destroy
-  # has_many :high_tech_products, dependent: :destroy
+  has_many :product_adquisitions, dependent: :destroy
+  has_many :product_sales, dependent: :destroy
+  has_many :high_tech_products, dependent: :destroy
+  has_many :rent_products, dependent: :destroy
 
   # validations
   validates :model,
