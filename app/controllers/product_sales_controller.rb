@@ -67,7 +67,7 @@ class ProductSalesController < ApplicationController
   # Allowed parameters
   def product_sale_params
     params.require(:product_sale).permit(
-      :adquisition_date,
+      :sale_date,
       :quantity,
       :product_id,
       :client_id

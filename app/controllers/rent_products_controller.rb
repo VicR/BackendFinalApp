@@ -1,5 +1,5 @@
 # +RentProduct+ Controller
-class RentProductController < ApplicationController
+class RentProductsController < ApplicationController
   # filters
   before_action :authenticate_user!
   before_action :rent_product, only: %i[show update destroy]

@@ -26,7 +26,6 @@ RSpec.describe CharacteristicsController, type: :controller do
       }
       json = rest_response_body(:characteristic)
       expect(response.status).to eq(200)
-      expect(json[:id].to_i).to eq(characteristic.id)
       expect(json[:field]).to eq(characteristic.field)
       expect(json[:value]).to eq(characteristic.value)
       expect(json[:product_id]).to eq(characteristic.product.id)
@@ -53,7 +52,6 @@ RSpec.describe CharacteristicsController, type: :controller do
       json = rest_response_body(:characteristic)
       expect(response.status).to eq(201)
       expect(json).to include(:id)
-      expect(json[:id].to_i).to eq(characteristic.id)
       expect(json[:field]).to eq(characteristic.field)
       expect(json[:value]).to eq(characteristic.value)
       expect(json[:product_id]).to eq(characteristic.product.id)
