@@ -83,7 +83,7 @@ RSpec.describe ProductsController, type: :controller do
   context '#update' do
     let(:product) { create(:product) }
     it 'valid' do
-      model = 'New model'
+      model = 'Updated model'
       process :update, method: :post, params: {
         id: product.id,
         product: {

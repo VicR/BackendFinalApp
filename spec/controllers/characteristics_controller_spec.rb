@@ -70,7 +70,7 @@ RSpec.describe CharacteristicsController, type: :controller do
   context '#update' do
     let(:characteristic) { create(:characteristic) }
     it 'valid' do
-      value = 'New value'
+      value = 'Updated value'
       process :update, method: :post, params: {
         id: characteristic.id,
         characteristic: {

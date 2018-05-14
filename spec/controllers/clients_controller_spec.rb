@@ -87,7 +87,7 @@ RSpec.describe ClientsController, type: :controller do
   context '#update' do
     let(:client) { create(:client) }
     it 'valid' do
-      name = 'New name'
+      name = 'Updated name'
       process :update, method: :post, params: {
         id: client.id,
         client: {

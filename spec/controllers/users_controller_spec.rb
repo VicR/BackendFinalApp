@@ -157,7 +157,7 @@ RSpec.describe UsersController, type: :controller do
     context '#update' do
       let(:user) { create(:user) }
       it 'valid' do
-        new_name = user.name + 'new_name'
+        new_name = user.name + 'Updated name'
         process :update, method: :post, params: {
           id: user.id,
           user: {
@@ -180,7 +180,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'unauthorized', :unauthorized do
-        new_name = user.name + 'new_name'
+        new_name = user.name + 'Updated name'
         process :update, method: :post, params: {
           id: user.id,
           user: {
