@@ -33,4 +33,50 @@ class Client < ApplicationRecord
             :ine,
             :phone,
             :address, presence: true
+
+  # functions
+  def full_name
+    full_name = name
+    full_name = "#{full_name} #{fathers_last}" if fathers_last.present?
+    full_name = "#{full_name} #{mothers_last}" if mothers_last.present?
+    full_name
+  end
+
+  # CSV
+  # Generates CSV file from all +Clients+
+  # @param [Hash] options - Optional hash of options thats Ruby's CSV::generate understands
+  # @return [File] CSV with data about all +Clients+
+  def clients_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << ['Name', 'INE', 'Phone', 'Address']
+      all.find_each do |client|
+        csv << [
+          client.full_name,
+          client.ine,
+          client.phone,
+          client.address
+        ]
+        client.client_services.find_each do |service|
+          csv << [
+            service.id,
+            service.description,
+            service.total.to_s
+          ]
+        end
+        client.client_printers.find_each do |printer|
+          csv << [
+            printer.id,
+            printer.adquisition_date
+          ]
+        end
+        client.product_sales.find_each do |sale|
+          csv << [
+            sale.id,
+            sale.sale_date,
+            sale.quantity
+          ]
+        end
+      end
+    end
+  end
 end
